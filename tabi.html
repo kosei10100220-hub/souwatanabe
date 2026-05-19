@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅 — 渡邉颯</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ==============================
+       PAGE HERO
+    ============================== */
+    #page-hero {
+      height: 82vh;
+      min-height: 520px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 8vw 6rem;
+      overflow: hidden;
+      background:
+        linear-gradient(to top, rgba(10,8,6,0.88) 30%, rgba(10,8,6,0.28) 100%),
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=80') center / cover no-repeat;
+    }
+
+    .page-hero-deco {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(10rem, 22vw, 20rem);
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: 3vh;
+      right: 4vw;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .page-hero-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.5em;
+      color: var(--red-light);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+
+    .page-hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(4rem, 9vw, 8rem);
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .page-hero-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2.2rem);
+      color: var(--muted);
+      letter-spacing: 0.35em;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    /* ==============================
+       INTRO TEXT
+    ============================== */
+    #tabi-intro {
+      padding: 9rem 8vw;
+      background: var(--paper);
+    }
+
+    .intro-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      gap: 0 3.5rem;
+      align-items: start;
+    }
+
+    .intro-line {
+      background: var(--red);
+      align-self: stretch;
+    }
+
+    .intro-body .section-label {
+      margin-bottom: 2rem;
+    }
+
+    .intro-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.95rem, 1.6vw, 1.06rem);
+      line-height: 2.5;
+      color: #3a3630;
+      letter-spacing: 0.045em;
+    }
+
+    /* ==============================
+       PREFECTURES MAP
+    ============================== */
+    #tabi-map {
+      padding: 7rem 8vw;
+      background: var(--paper-dark);
+    }
+
+    .pref-count {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 1;
+      color: rgba(10,10,10,0.07);
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      letter-spacing: -0.03em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .map-header {
+      position: relative;
+    }
+
+    .pref-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 3rem;
+    }
+
+    .pref-tag {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+      cursor: default;
+    }
+
+    .pref-tag:hover {
+      background: var(--red);
+      transform: translateY(-4px);
+    }
+
+    .pref-tag-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .pref-tag-roman {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: rgba(245,240,232,0.4);
+      transition: color 0.3s;
+    }
+
+    .pref-tag:hover .pref-tag-roman {
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ==============================
+       HIGHLIGHT CARDS
+    ============================== */
+    #tabi-highlight {
+      padding: 7rem 8vw;
+      background: var(--paper);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .highlight-card {
+      background: var(--ink);
+      overflow: hidden;
+      transition: transform 0.4s ease;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .highlight-photo {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .highlight-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(10%);
+      transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+    }
+
+    .highlight-card:hover .highlight-photo img {
+      transform: scale(1.07);
+      filter: grayscale(0%);
+    }
+
+    .highlight-body {
+      padding: 2.2rem 2rem 2.4rem;
+      color: var(--paper);
+    }
+
+    .highlight-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.42em;
+      color: var(--red-light);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .highlight-bar {
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+      margin-bottom: 1.1rem;
+      transition: width 0.4s ease;
+    }
+
+    .highlight-card:hover .highlight-bar {
+      width: 52px;
+    }
+
+    .highlight-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .highlight-text {
+      font-size: 0.82rem;
+      line-height: 2.1;
+      color: rgba(245,240,232,0.6);
+      letter-spacing: 0.02em;
+    }
+
+    /* ==============================
+       EPISODE SECTION
+    ============================== */
+    #tabi-episode {
+      position: relative;
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(10,8,6,0.92) 40%, rgba(10,8,6,0.55) 100%),
+        url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80') center / cover no-repeat;
+    }
+
+    .episode-inner {
+      position: relative;
+      z-index: 2;
+      padding: 8rem 8vw;
+      max-width: 760px;
+    }
+
+    .episode-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.5em;
+      color: var(--red-light);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .episode-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .episode-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1.4;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .episode-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.92rem, 1.5vw, 1rem);
+      line-height: 2.6;
+      color: rgba(245,240,232,0.72);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .episode-closing {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem;
+      color: var(--red-light);
+      letter-spacing: 0.1em;
+      border-left: 2px solid var(--red);
+      padding-left: 1.2rem;
+      line-height: 1.9;
+    }
+
+    /* 番外編ラベル装飾 */
+    .episode-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    /* ==============================
+       FOOTER NAV
+    ============================== */
+    #page-footer-nav {
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .fnav-item {
+      padding: 3.5rem 5vw;
+      text-decoration: none;
+      color: var(--paper);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.35s ease;
+    }
+
+    .fnav-item:first-child {
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .fnav-item:last-child {
+      text-align: right;
+    }
+
+    .fnav-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .fnav-direction {
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      color: var(--red-light);
+      text-transform: uppercase;
+    }
+
+    .fnav-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 700;
+    }
+
+    .fnav-hint {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+
+    /* ==============================
+       NAV LOGO LINK
+    ============================== */
+    a.logo {
+      text-decoration: none;
+    }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media (max-width: 900px) {
+      .highlight-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      #page-hero      { padding: 0 6vw 4rem; }
+      #tabi-intro,
+      #tabi-map,
+      #tabi-highlight { padding: 5rem 6vw; }
+      .episode-inner  { padding: 5rem 6vw; }
+      .intro-inner    { grid-template-columns: 1fr; }
+      .intro-line     { display: none; }
+      #page-footer-nav { grid-template-columns: 1fr; }
+      .fnav-item:first-child  { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .fnav-item:last-child   { text-align: left; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">S.W</a>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#categories">Contents</a></li>
+      <li><a href="index.html#photos">Gallery</a></li>
+      <li><a href="index.html#quote">Motto</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section id="page-hero">
+    <div class="page-hero-deco">03</div>
+    <div class="page-hero-label">Contents 03</div>
+    <h1 class="page-hero-title">旅</h1>
+    <div class="page-hero-sub">Travel</div>
+  </section>
+
+  <!-- INTRO TEXT -->
+  <section id="tabi-intro">
+    <div class="intro-inner scroll-reveal">
+      <div class="intro-line"></div>
+      <div class="intro-body">
+        <div class="section-label">About My Travel</div>
+        <p class="intro-text">
+          旅をするたびに、自分の世界が少しずつ広がっていく気がする。静岡で生まれ育った僕は、これまでに神奈川・東京・山梨・埼玉・三重・愛知・宮城・熊本・福岡・大分・宮崎・鹿児島・広島・大阪・京都を訪れてきた。中でも京都の寺社巡りは格別で、日常の喧騒から切り離された静けさが今でも心に残っている。九州では熊本・大分・宮崎・鹿児島と、それぞれの土地の豊かな自然に圧倒された。旅は場所の記憶だけでなく、そこで過ごした人との時間も刻んでいく。絶景よりも、誰かと笑った瞬間の方が、ずっと長く記憶に残るものだと思う。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREFECTURES MAP -->
+  <section id="tabi-map">
+    <div class="section-header scroll-reveal" style="position:relative;">
+      <h2>これまでの旅路</h2>
+      <span>訪問済み 16都府県</span>
+      <div class="pref-count">16</div>
+    </div>
+    <div class="pref-grid">
+      <div class="pref-tag scroll-reveal" style="--delay:0s">
+        <span class="pref-tag-name">静岡</span>
+        <span class="pref-tag-roman">Shizuoka</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.03s">
+        <span class="pref-tag-name">神奈川</span>
+        <span class="pref-tag-roman">Kanagawa</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.06s">
+        <span class="pref-tag-name">東京</span>
+        <span class="pref-tag-roman">Tokyo</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.09s">
+        <span class="pref-tag-name">山梨</span>
+        <span class="pref-tag-roman">Yamanashi</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.12s">
+        <span class="pref-tag-name">埼玉</span>
+        <span class="pref-tag-roman">Saitama</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.15s">
+        <span class="pref-tag-name">三重</span>
+        <span class="pref-tag-roman">Mie</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.18s">
+        <span class="pref-tag-name">愛知</span>
+        <span class="pref-tag-roman">Aichi</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.21s">
+        <span class="pref-tag-name">宮城</span>
+        <span class="pref-tag-roman">Miyagi</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.24s">
+        <span class="pref-tag-name">熊本</span>
+        <span class="pref-tag-roman">Kumamoto</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.27s">
+        <span class="pref-tag-name">福岡</span>
+        <span class="pref-tag-roman">Fukuoka</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.30s">
+        <span class="pref-tag-name">大分</span>
+        <span class="pref-tag-roman">Oita</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.33s">
+        <span class="pref-tag-name">宮崎</span>
+        <span class="pref-tag-roman">Miyazaki</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.36s">
+        <span class="pref-tag-name">鹿児島</span>
+        <span class="pref-tag-roman">Kagoshima</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.39s">
+        <span class="pref-tag-name">広島</span>
+        <span class="pref-tag-roman">Hiroshima</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.42s">
+        <span class="pref-tag-name">大阪</span>
+        <span class="pref-tag-roman">Osaka</span>
+      </div>
+      <div class="pref-tag scroll-reveal" style="--delay:0.45s">
+        <span class="pref-tag-name">京都</span>
+        <span class="pref-tag-roman">Kyoto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT CARDS -->
+  <section id="tabi-highlight">
+    <div class="section-header scroll-reveal">
+      <h2>印象に残った旅</h2>
+      <span>Memorable Trips</span>
+    </div>
+    <div class="highlight-grid">
+      <div class="highlight-card scroll-reveal" style="--delay:0s">
+        <div class="highlight-photo">
+          <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=800&q=80" alt="京都">
+        </div>
+        <div class="highlight-body">
+          <div class="highlight-label">Kyoto</div>
+          <div class="highlight-bar"></div>
+          <div class="highlight-title">京都 — 静けさの中の非日常</div>
+          <p class="highlight-text">古刹の石畳を歩くたびに、時間の流れが変わる感覚があった。早朝の伏見稲荷、夕暮れの嵐山——日常の喧騒がそっと遠ざかっていく空間は、都市に住む人間が忘れかけているものを静かに思い出させてくれる。また必ず来ようと思った場所だ。</p>
+        </div>
+      </div>
+      <div class="highlight-card scroll-reveal" style="--delay:0.12s">
+        <div class="highlight-photo">
+          <img src="https://images.unsplash.com/photo-1467377791767-c929b5dc9a23?w=800&q=80" alt="九州">
+        </div>
+        <div class="highlight-body">
+          <div class="highlight-label">Kyushu</div>
+          <div class="highlight-bar"></div>
+          <div class="highlight-title">九州 — 圧倒される自然の力</div>
+          <p class="highlight-text">熊本・大分・宮崎・鹿児島と渡り歩いた九州の旅は、自然のスケール感に徹底的に打ちのめされた記憶だ。阿蘇の雄大なカルデラ、霧島の稜線、指宿の砂蒸し——土地それぞれの息吹が、確かに体に刻まれている。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPISODE SECTION -->
+  <section id="tabi-episode">
+    <div class="episode-inner scroll-reveal">
+      <div class="episode-badge">番外編</div>
+      <div class="episode-label">Extra Episode</div>
+      <h2 class="episode-title">あの前回り受け身について</h2>
+      <p class="episode-text">
+        横浜のホテルの一室で、友達が突然前回り受け身を披露した。理由も、脈絡も、予告も何もなかった。ただ、その瞬間のあまりの唐突さに、僕は笑いが止まらなかった。旅の思い出というのは、名所の写真や絶景の感動だけではない——そのことを、あの夜はっきりと知った気がする。なんでもない廊下で起きたその出来事が、今でも僕の中で一番鮮明な旅の記憶として生き続けている。
+      </p>
+      <span class="episode-closing">
+        人生に彩りを与えるのは、予定調和の美しさではない。<br>
+        こういう、予測不能な瞬間なのかもしれない。
+      </span>
+    </div>
+  </section>
+
+  <!-- FOOTER NAV -->
+  <nav id="page-footer-nav">
+    <a href="gurume.html" class="fnav-item">
+      <span class="fnav-direction">← Back</span>
+      <span class="fnav-label">グルメへ戻る</span>
+      <span class="fnav-hint">Food &amp; Gourmet</span>
+    </a>
+    <a href="kenkyu.html" class="fnav-item">
+      <span class="fnav-direction">Next →</span>
+      <span class="fnav-label">次のコンテンツ：研究内容</span>
+      <span class="fnav-hint">Research</span>
+    </a>
+  </nav>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-name">渡邉 颯</div>
+      <div class="footer-period">第28期 / Watanabe So</div>
+    </div>
+    <div class="footer-right">静岡県沼津市出身</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
