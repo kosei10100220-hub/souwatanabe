@@ -181,7 +181,7 @@ body:has(.cat-card:hover) .cursor-follower {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(10,8,6,0.78) 0%, rgba(10,8,6,0.45) 100%),
+    linear-gradient(135deg, rgba(10,8,6,0.55) 0%, rgba(10,8,6,0.25) 100%),
     url('../素材写真/IMG_1936.JPG') center / cover no-repeat;
 }
 
