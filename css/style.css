@@ -600,6 +600,118 @@ footer {
 }
 
 /* ===========================
+   GRAIN OVERLAY
+=========================== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8000;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
+/* ===========================
+   SCROLL PROGRESS BAR
+=========================== */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--red-light);
+  z-index: 9500;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* ===========================
+   PAGE LOADER
+=========================== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-inner {
+  text-align: center;
+}
+
+.loader-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  color: var(--paper);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s forwards;
+}
+
+.loader-en {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  color: var(--muted);
+  margin-bottom: 2.4rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.45s forwards;
+}
+
+.loader-bar {
+  width: 180px;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-bar span {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0%;
+  background: var(--red-light);
+  transition: width 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loader-bar span.done {
+  width: 100%;
+}
+
+/* ===========================
+   HERO DECO NUMBER
+=========================== */
+.hero-deco-num {
+  position: absolute;
+  right: -1vw;
+  bottom: -4vh;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(16rem, 28vw, 26rem);
+  line-height: 1;
+  color: rgba(255,255,255,0.035);
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* ===========================
    RESPONSIVE
 =========================== */
 @media (max-width: 900px) {

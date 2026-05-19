@@ -5,6 +5,41 @@
 'use strict';
 
 // ===========================
+// PAGE LOADER
+// ===========================
+(function initLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  const bar = loader.querySelector('.loader-bar span');
+
+  function dismiss() {
+    if (bar) bar.classList.add('done');
+    setTimeout(() => loader.classList.add('hidden'), 950);
+  }
+
+  if (document.readyState === 'complete') {
+    dismiss();
+  } else {
+    window.addEventListener('load', dismiss);
+    setTimeout(dismiss, 2200);
+  }
+})();
+
+
+// ===========================
+// SCROLL PROGRESS BAR
+// ===========================
+(function initProgressBar() {
+  const bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / total * 100) + '%';
+  }, { passive: true });
+})();
+
+
+// ===========================
 // CUSTOM CURSOR
 // ===========================
 (function initCursor() {
