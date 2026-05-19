@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研究内容 — 渡邉颯</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ==============================
+       PAGE HERO
+    ============================== */
+    #page-hero {
+      height: 82vh;
+      min-height: 520px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 8vw 6rem;
+      overflow: hidden;
+      background:
+        linear-gradient(to top, rgba(10,8,6,0.92) 30%, rgba(10,8,6,0.3) 100%),
+        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80') center / cover no-repeat;
+    }
+
+    .page-hero-deco {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(8rem, 18vw, 16rem);
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: 3vh;
+      right: 4vw;
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .page-hero-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.5em;
+      color: var(--red-light);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+
+    .page-hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+
+    .page-hero-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2.2rem);
+      color: var(--muted);
+      letter-spacing: 0.35em;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    /* ==============================
+       INTRO TEXT
+    ============================== */
+    #kenkyu-intro {
+      padding: 9rem 8vw;
+      background: var(--paper);
+    }
+
+    .intro-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      gap: 0 3.5rem;
+      align-items: start;
+    }
+
+    .intro-line {
+      background: var(--red);
+      align-self: stretch;
+    }
+
+    .intro-body .section-label {
+      margin-bottom: 2rem;
+    }
+
+    .intro-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.95rem, 1.6vw, 1.06rem);
+      line-height: 2.5;
+      color: #3a3630;
+      letter-spacing: 0.045em;
+    }
+
+    /* ==============================
+       PAPER / REPORT SECTION
+    ============================== */
+    #kenkyu-paper {
+      padding: 7rem 8vw;
+      background: var(--paper-dark);
+    }
+
+    .paper-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .paper-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .paper-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+
+    .paper-subtitle {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.8rem;
+    }
+
+    .paper-desc {
+      font-size: 0.88rem;
+      line-height: 2.2;
+      color: #3a3630;
+      max-width: 680px;
+      letter-spacing: 0.03em;
+    }
+
+    .paper-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem 4rem;
+      align-items: start;
+    }
+
+    .pdf-viewer {
+      background: var(--ink);
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      max-height: 680px;
+      overflow: hidden;
+    }
+
+    .pdf-viewer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .paper-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-width: 180px;
+    }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      padding: 1.1rem 1.6rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      transition: background 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-download:hover {
+      background: var(--red);
+    }
+
+    .btn-download svg {
+      flex-shrink: 0;
+    }
+
+    /* ==============================
+       VIDEO SECTION
+    ============================== */
+    #kenkyu-video {
+      padding: 7rem 8vw;
+      background: var(--ink);
+    }
+
+    #kenkyu-video .section-header h2 {
+      color: var(--paper);
+    }
+
+    #kenkyu-video .section-header span {
+      color: var(--muted);
+    }
+
+    #kenkyu-video .section-header {
+      border-bottom-color: rgba(245,240,232,0.1);
+      margin-bottom: 3rem;
+    }
+
+    .video-wrap {
+      position: relative;
+      background: #111;
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .video-wrap video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      background: #0a0a0a;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: var(--muted);
+      gap: 1rem;
+      pointer-events: none;
+    }
+
+    .video-placeholder svg {
+      opacity: 0.3;
+    }
+
+    .video-placeholder span {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      opacity: 0.5;
+    }
+
+    /* ==============================
+       AUDIO SECTION
+    ============================== */
+    #kenkyu-audio {
+      padding: 7rem 8vw;
+      background: var(--paper);
+    }
+
+    .audio-player {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      background: var(--ink);
+      padding: 2.5rem 2.8rem;
+    }
+
+    .audio-player audio {
+      display: none;
+    }
+
+    .audio-track-info {
+      margin-bottom: 1.8rem;
+    }
+
+    .audio-track-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      color: var(--red-light);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .audio-track-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      color: var(--paper);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .audio-play-btn {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(245,240,232,0.2);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--paper);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .audio-play-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .audio-progress-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .audio-seekbar {
+      width: 100%;
+      height: 2px;
+      background: rgba(245,240,232,0.12);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .audio-seekbar-fill {
+      height: 100%;
+      background: var(--red-light);
+      width: 0%;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    .audio-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .audio-placeholder-note {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-top: 1.5rem;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    /* ==============================
+       FOOTER NAV
+    ============================== */
+    #page-footer-nav {
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .fnav-item {
+      padding: 3.5rem 5vw;
+      text-decoration: none;
+      color: var(--paper);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.35s ease;
+    }
+
+    .fnav-item:first-child {
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .fnav-item:last-child {
+      text-align: right;
+    }
+
+    .fnav-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .fnav-direction {
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      color: var(--red-light);
+      text-transform: uppercase;
+    }
+
+    .fnav-label {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 700;
+    }
+
+    .fnav-hint {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+
+    a.logo { text-decoration: none; }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media (max-width: 900px) {
+      .paper-body {
+        grid-template-columns: 1fr;
+      }
+      .paper-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #page-hero        { padding: 0 6vw 4rem; }
+      #kenkyu-intro,
+      #kenkyu-paper,
+      #kenkyu-video,
+      #kenkyu-audio     { padding: 5rem 6vw; }
+      .intro-inner      { grid-template-columns: 1fr; }
+      .intro-line       { display: none; }
+      .audio-player     { padding: 1.8rem; }
+      #page-footer-nav  { grid-template-columns: 1fr; }
+      .fnav-item:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .fnav-item:last-child  { text-align: left; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">S.W</a>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#categories">Contents</a></li>
+      <li><a href="index.html#photos">Gallery</a></li>
+      <li><a href="index.html#quote">Motto</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section id="page-hero">
+    <div class="page-hero-deco">04</div>
+    <div class="page-hero-label">Contents 04</div>
+    <h1 class="page-hero-title">研究内容</h1>
+    <div class="page-hero-sub">Research</div>
+  </section>
+
+  <!-- ZEMI INTRO -->
+  <section id="kenkyu-intro">
+    <div class="intro-inner scroll-reveal">
+      <div class="intro-line"></div>
+      <div class="intro-body">
+        <div class="section-label">About My Research</div>
+        <p class="intro-text">
+          僕が所属しているのは、権丈善一研究会——社会保障政策の第一人者のもとで、経済成長と社会保障の関係を深く掘り下げるゼミだ。このゼミを選んだのは、「お金の流れが社会の形をつくる」という問いに向き合いたかったからだ。年金・医療・介護といった制度は、誰もがいつか直面するリアルな問題なのに、正面から学ぼうとする人は少ない。経済学の視点からそこに切り込む権丈先生の授業に、最初に触れたとき、「これだ」と思った。まだ答えのわからないことだらけだが、問いを立て続けることの大切さをゼミで学んでいる。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAPER SECTION -->
+  <section id="kenkyu-paper">
+    <div class="paper-header scroll-reveal">
+      <div class="paper-badge">新人王 2026</div>
+      <h2 class="paper-title">新人王2026</h2>
+      <div class="paper-subtitle">生成AIは新たな創造的破壊となるのか</div>
+      <p class="paper-desc">
+        生成AIの急速な普及は、シュンペーターが提唱した「創造的破壊」の現代版として経済・労働市場をどう再編するのか。本レポートでは、技術革新が雇用構造・社会保障制度に与える影響を分析し、AIと共存する持続可能な社会設計の方向性を考察した。既存の産業が壊される痛みと、そこから生まれる新しい価値の間で、私たちはどこに立てばいいのか——経済成長と社会保障の両面から問い直す試みである。
+      </p>
+    </div>
+    <div class="paper-body">
+      <div class="pdf-viewer scroll-reveal">
+        <iframe src="report.pdf" title="新人王2026 — 生成AIは新たな創造的破壊となるのか"></iframe>
+      </div>
+      <div class="paper-actions scroll-reveal" style="--delay:0.1s">
+        <a href="report.pdf" download class="btn-download">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/>
+          </svg>
+          PDFをダウンロード
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <section id="kenkyu-video">
+    <div class="section-header scroll-reveal">
+      <h2>動画解説</h2>
+      <span>Video Commentary</span>
+    </div>
+    <div class="video-wrap scroll-reveal" style="--delay:0.1s">
+      <video
+        controls
+        poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=860&q=60"
+        preload="none">
+        <source src="movie.mp4" type="video/mp4">
+        お使いのブラウザは動画再生に対応していません。
+      </video>
+    </div>
+  </section>
+
+  <!-- AUDIO SECTION -->
+  <section id="kenkyu-audio">
+    <div class="section-header scroll-reveal">
+      <h2>音声解説</h2>
+      <span>Audio Commentary</span>
+    </div>
+
+    <div class="audio-player scroll-reveal" style="--delay:0.1s">
+      <audio id="audioEl" preload="none">
+        <source src="audio.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="audio-track-info">
+        <div class="audio-track-label">Audio Overview</div>
+        <div class="audio-track-title">生成AIは新たな創造的破壊となるのか — 音声解説</div>
+      </div>
+
+      <div class="audio-controls">
+        <button class="audio-play-btn" id="audioPlayBtn" aria-label="再生">
+          <!-- Play icon (default) -->
+          <svg id="iconPlay" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+          <!-- Pause icon (hidden) -->
+          <svg id="iconPause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+            <rect x="6" y="4" width="4" height="16"/>
+            <rect x="14" y="4" width="4" height="16"/>
+          </svg>
+        </button>
+
+        <div class="audio-progress-wrap">
+          <div class="audio-seekbar" id="audioSeekbar">
+            <div class="audio-seekbar-fill" id="audioFill"></div>
+          </div>
+          <div class="audio-time">
+            <span id="audioCurrent">0:00</span>
+            <span id="audioDuration">—</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="audio-placeholder-note">— audio.mp3 が配置されると再生できます —</p>
+    </div>
+  </section>
+
+  <!-- FOOTER NAV -->
+  <nav id="page-footer-nav">
+    <a href="tabi.html" class="fnav-item">
+      <span class="fnav-direction">← Back</span>
+      <span class="fnav-label">旅へ戻る</span>
+      <span class="fnav-hint">Travel</span>
+    </a>
+    <a href="tennis.html" class="fnav-item">
+      <span class="fnav-direction">Next →</span>
+      <span class="fnav-label">次のコンテンツ：テニス</span>
+      <span class="fnav-hint">Tennis</span>
+    </a>
+  </nav>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-name">渡邉 颯</div>
+      <div class="footer-period">第28期 / Watanabe So</div>
+    </div>
+    <div class="footer-right">静岡県沼津市出身</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ==============================
+       CUSTOM AUDIO PLAYER
+    ============================== */
+    (function () {
+      const audio    = document.getElementById('audioEl');
+      const playBtn  = document.getElementById('audioPlayBtn');
+      const iconPlay = document.getElementById('iconPlay');
+      const iconPause= document.getElementById('iconPause');
+      const fill     = document.getElementById('audioFill');
+      const seekbar  = document.getElementById('audioSeekbar');
+      const current  = document.getElementById('audioCurrent');
+      const duration = document.getElementById('audioDuration');
+
+      function fmt(s) {
+        if (!isFinite(s)) return '—';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60).toString().padStart(2, '0');
+        return m + ':' + sec;
+      }
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().catch(() => {});
+        } else {
+          audio.pause();
+        }
+      });
+
+      audio.addEventListener('play', () => {
+        iconPlay.style.display  = 'none';
+        iconPause.style.display = '';
+      });
+
+      audio.addEventListener('pause', () => {
+        iconPlay.style.display  = '';
+        iconPause.style.display = 'none';
+      });
+
+      audio.addEventListener('ended', () => {
+        iconPlay.style.display  = '';
+        iconPause.style.display = 'none';
+        fill.style.width = '0%';
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        duration.textContent = fmt(audio.duration);
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        fill.style.width = pct + '%';
+        current.textContent = fmt(audio.currentTime);
+      });
+
+      seekbar.addEventListener('click', (e) => {
+        if (!audio.duration) return;
+        const rect = seekbar.getBoundingClientRect();
+        const pct  = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+      });
+    })();
+  </script>
+</body>
+</html>
