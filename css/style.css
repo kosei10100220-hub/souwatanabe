@@ -180,7 +180,9 @@ body:has(.cat-card:hover) .cursor-follower {
   padding: 0 8vw;
   position: relative;
   overflow: hidden;
-  background: #0e0c09;
+  background:
+    linear-gradient(135deg, rgba(10,8,6,0.78) 0%, rgba(10,8,6,0.45) 100%),
+    url('../素材写真/IMG_1936.JPG') center / cover no-repeat;
 }
 
 #particleCanvas {
