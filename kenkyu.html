@@ -153,17 +153,17 @@
     }
 
     .paper-body {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem 4rem;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     .pdf-viewer {
       background: var(--ink);
       width: 100%;
-      aspect-ratio: 3 / 4;
-      max-height: 680px;
+      height: 85vh;
+      min-height: 640px;
+      max-height: 1000px;
       overflow: hidden;
     }
 
@@ -176,9 +176,9 @@
 
     .paper-actions {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 1rem;
-      min-width: 180px;
+      flex-wrap: wrap;
     }
 
     .btn-download {
@@ -425,12 +425,9 @@
        RESPONSIVE
     ============================== */
     @media (max-width: 900px) {
-      .paper-body {
-        grid-template-columns: 1fr;
-      }
-      .paper-actions {
-        flex-direction: row;
-        flex-wrap: wrap;
+      .pdf-viewer {
+        height: 70vh;
+        min-height: 480px;
       }
     }
 
