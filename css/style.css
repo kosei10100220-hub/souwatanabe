@@ -818,4 +818,7 @@ body::after {
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
   #categories, #quote { padding: 5rem 6vw; }
   footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+
+  .photo-track { animation-duration: 14s; gap: 0.6rem; }
+  .photo-track img { height: 220px; }
 }
