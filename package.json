@@ -1,0 +1,16 @@
+{
+  "name": "souwatanabe",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Watanabe So",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests configured\""
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "Watanabe So",
+  "license": "ISC"
+}
